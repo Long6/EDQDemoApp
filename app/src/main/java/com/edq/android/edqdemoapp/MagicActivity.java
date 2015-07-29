@@ -24,42 +24,9 @@ import com.edq.android.helper.HideKeyboardFocusChangeListener;
 import com.edq.android.services.EmailClient;
 
 
-
 public class MagicActivity extends FragmentActivity {
 
     private static final String TAG = "longLogger";
-
-
-
-/*None functioning implementation of TabHost
-    private TabHost tabHost;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_magic);
-        tabHost = (TabHost)findViewById(R.id.tabHost);
-        tabHost.setup();
-        //tabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
-
-        TabSpec tab1 = tabHost.newTabSpec("First Tab");
-        TabSpec tab2 = tabHost.newTabSpec("Second Tab");
-        TabSpec tab3 = tabHost.newTabSpec("Third Tab");
-
-        tab1.setIndicator("EDQ Email");
-        tab1.setContent(new Intent(this,EmailFragment.class));
-
-        tab2.setIndicator("EDQ Phone");
-        tab2.setContent(new Intent(this,PhoneFragment.class));
-
-        tab3.setIndicator("EDQ Address");
-        tab3.setContent(new Intent(this,AddressFragment.class));
-
-        tabHost.addTab(tab1);
-        tabHost.addTab(tab2);
-        tabHost.addTab(tab3);
-*/
 
     private ViewPager viewPager;
     private MagicPagerAdapter magicPagerAdapter;
@@ -79,6 +46,7 @@ public class MagicActivity extends FragmentActivity {
 
         viewPager.setAdapter(magicPagerAdapter);
 
+        //Try to reference fragment and change dynamically
         /*MagicPagerAdapter testing = (MagicPagerAdapter) viewPager.getAdapter();
         EmailFragment emailFragment = (EmailFragment)testing.getItem(0);
         emailFragment.setViewText();

@@ -72,6 +72,7 @@ public class EmailClient {
                 }
         };
 
+        //Set SSL TrustAll
         SSLContext context = SSLContext.getInstance("TLS");
         context.init(null, trustAllCerts, null);
 
