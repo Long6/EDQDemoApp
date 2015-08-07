@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -75,13 +76,6 @@ public class MainActivity extends FragmentActivity {
         Intent intentMagic = new Intent(this, MagicActivity.class);
         startActivity(intentMagic);
 
-/*
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        MagicActivity fragment = new MagicActivity();
-        transaction.replace(R.id.sample_content_fragment, fragment);
-        transaction.commit();
-*/
-
         //Logger
         Log.i(TAG, "switchMagicView");
     }
@@ -93,5 +87,21 @@ public class MainActivity extends FragmentActivity {
 
         //Logger
         Log.i(TAG, "switchEmailView");
+    }
+/*
+    //testMethod for fragment linkage, called from EmailFragment
+    public void emailFragmentButtonClick() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        MagicActivity fragment = new MagicActivity();
+        transaction.replace(R.id.sample_content_fragment, fragment);
+        transaction.commit();
+    }
+*/
+
+    public void alertBox(View view) {
+        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+        alertDialog.setTitle("Testing");
+        alertDialog.setMessage("Main activity works!");
+        alertDialog.show();
     }
 }

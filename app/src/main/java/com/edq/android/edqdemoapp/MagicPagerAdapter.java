@@ -94,7 +94,7 @@ public class MagicPagerAdapter extends FragmentPagerAdapter {
         return PAGE_COUNT;
     }
 
-    //Helper funciton to get fragmentId
+    //Helper function to get fragmentId
     private static String makeFragmentName(int viewId, int index)
     {
         return "android:switcher:" + viewId + ":" + index;
