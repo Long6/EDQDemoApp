@@ -11,11 +11,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.edq.android.fragments.AddressFragment;
 import com.edq.android.fragments.EmailFragment;
@@ -53,7 +56,17 @@ public class MagicActivity extends FragmentActivity {
         */
         /*String test = viewPager.getAdapter().getPageTitle(0).toString();
         String blah = "tasdf";*/
+
     }
+
+    public void alertBox(View view) {
+        Toast.makeText(getApplicationContext(), "Magic activity is working!! rawr >:O",
+                Toast.LENGTH_SHORT).show();
+
+        EmailFragment emailFragment = (EmailFragment) magicPagerAdapter.getItem(0);
+        emailFragment.updateText();
+    }
+
 
 
 }

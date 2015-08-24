@@ -39,5 +39,10 @@ public class EmailFragment extends Fragment {
         return view;
     }
 
+    public void updateText() {
+        TextView textView = (TextView)container.findViewById(R.id.textView);
+        textView.setText("I changed this stuff!! ^_^");
+    }
+
 }
 
