@@ -64,7 +64,7 @@ public class MagicActivity extends FragmentActivity {
                 Toast.LENGTH_SHORT).show();
 
         EmailFragment emailFragment = (EmailFragment) magicPagerAdapter.getItem(0);
-        emailFragment.updateText();
+        emailFragment.updateText(view);
     }
 
 

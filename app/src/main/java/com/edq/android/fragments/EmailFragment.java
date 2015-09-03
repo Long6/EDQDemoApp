@@ -25,6 +25,7 @@ import com.edq.android.services.EmailClient;
  */
 public class EmailFragment extends Fragment {
 
+
     View view;
     ViewGroup container;
 
@@ -39,8 +40,10 @@ public class EmailFragment extends Fragment {
         return view;
     }
 
-    public void updateText() {
+    public void updateText(View view) {
+
         TextView textView = (TextView)container.findViewById(R.id.textView);
+
         textView.setText("I changed this stuff!! ^_^");
     }
 

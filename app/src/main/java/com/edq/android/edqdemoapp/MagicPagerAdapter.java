@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
@@ -37,6 +38,7 @@ public class MagicPagerAdapter extends FragmentPagerAdapter {
 
     public MagicPagerAdapter(FragmentManager fm) {
         super(fm);
+
         this.fm = fm;
     }
 
@@ -46,7 +48,9 @@ public class MagicPagerAdapter extends FragmentPagerAdapter {
 
             // Open EmailFragment.java
             case 0:
-                EmailFragment emailFragment = new EmailFragment();
+                if (emailFragment == null) {
+                    emailFragment = new EmailFragment();
+                }
                 return emailFragment;
 
             // Open PhoneFragment.java
