@@ -38,7 +38,7 @@ public class EmailClient {
             KEY = "ahuE1VM9MZA3nkewqEvsqUsaIUXDgrAzCbhvccjewiM";
             timeout = "5";
         } catch (Exception e) {
-            Log.i(TAG, "EmailService: constructor exception: " + e.getLocalizedMessage());
+            Log.i(TAG, "EmailClient: constructor exception: " + e.getLocalizedMessage());
         }
     }
 

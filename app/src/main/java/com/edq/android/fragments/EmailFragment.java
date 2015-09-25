@@ -25,26 +25,42 @@ import com.edq.android.services.EmailClient;
  */
 public class EmailFragment extends Fragment {
 
-
     View view;
-    ViewGroup container;
+    ViewGroup cont;
+    ScrollView scrollView;
+    TextView statusVerified;
+    TextView statusUnknown;
+    TextView statusUndeliverable;
+    TextView statusUnreachable;
+    TextView statusIllegitimate;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Get the view from fragment_email.xml
-        this.view = inflater.inflate(R.layout.fragment_email, container, false);
-        this.container = container;
+        cont = container;
+        view = inflater.inflate(R.layout.fragment_email, cont, false);
+
+        scrollView = (ScrollView)view.findViewById(R.id.scrollView);
+        scrollView.setVisibility(View.INVISIBLE);
+
+        //Set all verification levels to GONE
+        for (int i = 0; i < scrollView.getChildCount(); i++) {
+            View v = scrollView.getChildAt(i);
+            v.setVisibility(View.GONE);
+        }
 
         return view;
     }
 
-    public void updateText(View view) {
+    public void updateText(View view, String s) {
 
-        TextView textView = (TextView)container.findViewById(R.id.textView);
+        scrollView.setVisibility(View.VISIBLE);
+        TextView textView = (TextView)cont.findViewById(R.id.textView_Verified);
 
-        textView.setText("I changed this stuff!! ^_^");
+        textView.setText(s);
     }
 
 }

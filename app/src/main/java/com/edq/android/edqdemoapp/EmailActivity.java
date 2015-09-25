@@ -1,11 +1,8 @@
 package com.edq.android.edqdemoapp;
 
-import android.app.ActionBar;
 import android.app.Activity;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -19,8 +16,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.edq.android.services.EmailClient;
-import com.edq.android.services.EmailService;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -71,6 +66,7 @@ public class EmailActivity extends Activity {
         //Layout
         RelativeLayout emailLayout = new RelativeLayout(this);
         emailLayout.setClickable(true);
+        emailLayout.setPadding(32, 32, 32, 32);
 
         //Email Button
         final Button emailButton = new Button(this);
@@ -78,14 +74,16 @@ public class EmailActivity extends Activity {
 
         //Email field
         final EditText emailField = new EditText(this);
+        emailField.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+
         emailField.setHint("Email");
 
-        //Text field
+        //TextView - Validation status
         final TextView textView = new TextView(this);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 26);
         textView.setGravity(Gravity.TOP);
 
-        //Text field 2
+        //TextView2 - JSON Results
         final TextView textView2 = new TextView(this);
         textView2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 21);
 
@@ -105,7 +103,7 @@ public class EmailActivity extends Activity {
         //Button Position
         emailButtonParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
         emailButtonParams.addRule(RelativeLayout.BELOW, textView.getId());
-        emailButton.setBackgroundColor(getResources().getColor(R.color.main_button));
+        emailButton.setBackgroundColor(getResources().getColor(R.color.buttons_bg));
         emailButton.setTextColor(getResources().getColor(R.color.main_button_text));
 
         //Button listener
@@ -115,11 +113,6 @@ public class EmailActivity extends Activity {
                 String email = emailField.getText().toString();
                 String emailResponse = "";
                 Log.i(TAG, "EmailAcitivity: email=" + email);
-
-                /* EmailService class
-                EmailService emailService = new EmailService();
-                emailService.validateEmail(email, EmailActivity.this);
-                */
 
                 EmailClient emailClient = new EmailClient();
                 try {
@@ -134,15 +127,15 @@ public class EmailActivity extends Activity {
         };
         emailButton.setOnClickListener(emailButtonListener);
 
-        //emailField container Height/Width
+        //emailField container Width/Height
         RelativeLayout.LayoutParams emailFieldParams = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.MATCH_PARENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT
         );
 
         //emailField width
-        int emailFieldWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, getResources().getDisplayMetrics());
-        emailField.setWidth(emailFieldWidth);
+        int emailFieldWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 120, getResources().getDisplayMetrics());
+        //emailField.setWidth(emailFieldWidth);
 
         //emailField position
         emailFieldParams.addRule(RelativeLayout.CENTER_HORIZONTAL);

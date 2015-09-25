@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -59,14 +60,36 @@ public class MagicActivity extends FragmentActivity {
 
     }
 
-    public void alertBox(View view) {
+    public void validateEmail(View view) {
+
+        EditText emailInput = (EditText)view.findViewById(R.id.emailFragmentInput);
+        String email = emailInput.getText().toString();
+
+        String emailResponse = "";
+        Log.i(TAG, "EmailAcitivity: email=" + email);
+
+
+        EmailClient emailClient = new EmailClient();
+        try {
+            emailResponse = emailClient.validity(email);
+        } catch (Exception e) {
+            Log.i(TAG, "EmailClient Exception: " + e.getLocalizedMessage());
+            e.printStackTrace();
+        }
+
+        updateStatus(view, emailResponse);
+    }
+
+    public void updateStatus(View view, String s) {
+
+    }
+
+    public void alertBox(View view, String s) {
         Toast.makeText(getApplicationContext(), "Magic activity is working!! rawr >:O",
                 Toast.LENGTH_SHORT).show();
 
         EmailFragment emailFragment = (EmailFragment) magicPagerAdapter.getItem(0);
-        emailFragment.updateText(view);
+        emailFragment.updateText(view, s);
     }
-
-
 
 }
