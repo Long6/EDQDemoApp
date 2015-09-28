@@ -62,8 +62,12 @@ public class MagicActivity extends FragmentActivity {
 
     public void validateEmail(View view) {
 
+/*
         EditText emailInput = (EditText)view.findViewById(R.id.emailFragmentInput);
         String email = emailInput.getText().toString();
+*/
+
+        String email = "long.nguyen@experian.com";
 
         String emailResponse = "";
         Log.i(TAG, "EmailAcitivity: email=" + email);
@@ -81,7 +85,7 @@ public class MagicActivity extends FragmentActivity {
     }
 
     public void updateStatus(View view, String s) {
-
+        alertBox(view, s);
     }
 
     public void alertBox(View view, String s) {

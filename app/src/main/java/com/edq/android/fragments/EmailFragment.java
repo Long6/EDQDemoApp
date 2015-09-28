@@ -43,7 +43,8 @@ public class EmailFragment extends Fragment {
         cont = container;
         view = inflater.inflate(R.layout.fragment_email, cont, false);
 
-        scrollView = (ScrollView)view.findViewById(R.id.scrollView);
+/*
+        scrollView = (ScrollView)cont.findViewById(R.id.scrollView);
         scrollView.setVisibility(View.INVISIBLE);
 
         //Set all verification levels to GONE
@@ -51,16 +52,19 @@ public class EmailFragment extends Fragment {
             View v = scrollView.getChildAt(i);
             v.setVisibility(View.GONE);
         }
+*/
 
         return view;
     }
 
     public void updateText(View view, String s) {
 
-        scrollView.setVisibility(View.VISIBLE);
-        TextView textView = (TextView)cont.findViewById(R.id.textView_Verified);
+        ScrollView scrollV = (ScrollView)cont.findViewById(R.id.scrollView);
+        scrollV.setVisibility(View.VISIBLE);
 
-        textView.setText(s);
+        TextView textV = (TextView)cont.findViewById(R.id.textView_Verified);
+        textV.setVisibility(View.VISIBLE);
+        textV.setText(s);
     }
 
 }
